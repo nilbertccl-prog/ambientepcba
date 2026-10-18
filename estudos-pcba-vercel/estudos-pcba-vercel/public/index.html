@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ambiente de Estudos · Polícia Civil da Bahia 2026</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fa;--card:#fff;--tx:#14213d;--mut:#5b6478;--pri:#0b3d91;--pri2:#e8eefc;--ok:#1b7f4b;--bad:#b3261e;--warn:#b26a00;--bd:#d9dfec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1320;--card:#181e30;--tx:#e8ecf8;--mut:#9aa4bd;--pri:#7aa2ff;--pri2:#202a47;--ok:#4cc38a;--bad:#ff8a80;--warn:#ffc266;--bd:#2b3452}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1320;--card:#181e30;--tx:#e8ecf8;--mut:#9aa4bd;--pri:#7aa2ff;--pri2:#202a47;--ok:#4cc38a;--bad:#ff8a80;--warn:#ffc266;--bd:#2b3452}
+:root.hc{--bg:#000;--card:#000;--tx:#fff;--mut:#fff;--pri:#ffea00;--pri2:#000;--bd:#fff;--ok:#00ff88;--bad:#ff6b6b;--warn:#ffea00}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body.big{font-size:19px}
+h1,h2,h3{margin:.2em 0}h2{font-size:1.15em}h3{font-size:1em}
+a{color:var(--pri)}
+button,input,select,textarea{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:.55em .8em}
+button{cursor:pointer;background:var(--pri);color:#fff;border:0;font-weight:600}
+:root.hc button{color:#000}
+button.alt{background:var(--pri2);color:var(--pri);border:1px solid var(--bd)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+header{background:var(--pri);color:#fff;padding:14px 12px;border-radius:0 0 16px 16px}
+:root.hc header{color:#000}
+.hd{max-width:980px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.cd{font-weight:800;font-size:1.6em;line-height:1}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 0}
+nav button{white-space:nowrap;background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+nav button.on{background:var(--pri);color:#fff}
+:root.hc nav button.on{color:#000}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.alert{border-left:6px solid var(--warn);background:var(--pri2);padding:12px;border-radius:10px;margin:10px 0}
+.alert.red{border-color:var(--bad)}
+.k{font-size:1.8em;font-weight:800}.m{color:var(--mut);font-size:.9em}
+.bar{height:10px;background:var(--pri2);border-radius:6px;overflow:hidden;border:1px solid var(--bd)}.bar i{display:block;height:100%;background:var(--ok)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lk{display:block;padding:.6em .8em;border:1px solid var(--bd);border-radius:10px;text-decoration:none;margin:5px 0;background:var(--card)}
+.lk:hover{background:var(--pri2)}
+.ch{display:flex;align-items:flex-end;gap:6px;height:110px}.ch div{flex:1;text-align:center;font-size:.7em;color:var(--mut)}.ch b{display:block;background:var(--pri);border-radius:4px 4px 0 0;min-height:2px}
+.tm{font-size:3em;font-weight:800;text-align:center;font-variant-numeric:tabular-nums}
+li.done span{text-decoration:line-through;color:var(--mut)}
+ul{padding-left:0;list-style:none}li{padding:6px 0;border-bottom:1px solid var(--bd);display:flex;gap:8px;align-items:center}
+li>span{flex:1}
+textarea{width:100%;min-height:70px}input[type=text],input[type=password],input[type=number],input[type=date],select{max-width:100%}
+#login{max-width:380px;margin:8vh auto;padding:12px}
+footer{text-align:center;color:var(--mut);font-size:.85em;padding:20px 12px}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<a class="sr" href="#main">Ir para o conteúdo</a>
+
+<div id="login" hidden>
+  <div class="card">
+    <h1>🛡️ Estudos PCBA 2026</h1>
+    <p class="m">Entre com sua conta Google. Seus dados de estudo ficam salvos na pasta oculta do app no seu Google Drive e acompanham você em qualquer aparelho.</p>
+    <a href="/api/auth/login"><button type="button">Entrar com Google</button></a>
+  </div>
+</div>
+
+<div id="app" hidden>
+<header><div class="hd">
+  <div><h1 style="font-size:1.1em">🛡️ Polícia Civil da Bahia · Estudos 2026</h1><div style="font-size:.85em;opacity:.9">Prova: 06/12/2026 · <span id="sync"></span></div></div>
+  <div style="text-align:right"><div class="cd" id="cd">--</div><div style="font-size:.85em">dias para a prova</div></div>
+</div></header>
+<div class="wrap">
+  <nav id="nav" aria-label="Seções"></nav>
+  <main id="main"></main>
+  <footer>Ambiente criado com créditos ao professor <b>Nilberte Lima</b> · Instagram <a href="https://instagram.com/simplesmentenil" target="_blank" rel="noopener">@simplesmentenil</a></footer>
+</div>
+</div>
+
+<script>
+const EXAM=new Date(2026,11,6);
+const D=[
+["Arquivologia","1f-X_Boo9zNktscdBzAG7wJaCTtgA6uMj"],["Atualidades","1SmxRxhpyGobM62CKk5M89fudgtGmjR5a"],["Direito Administrativo","1P3dH9GLbkRYxoW-X5HyA5C74ANm_2Bhu"],["Direito Constitucional","1KCby589ewMV3Z_P43meBRNP6e0hqC9bN"],["Direito Penal","1ji3PAaFDH-jM-pJJbUrnJhceRchk9bao"],["Direito Processual Penal","1FTOmbj3zVTaFaP7sBLSH3FTEsjkyhBQS"],["Medicina Legal","1U4oh9dQ3z9bJp0VTz5hYLZPrV-S00Smq"],["D. Administrativo · Dossiê Tático","1E8pQsfHCAR4Y3H0M6hQjBOd5VXY2Ioa_"],["Edital","1Cbh5QQd8crs11B2AAy5yAB8giZ1Ihqa3"],["Informática","1bWUvIMR5SS--V9S_8CNNkKDM4QuwFUR_"],["Legislação Própria","1cJj0fJHLNebe5zvCJ_sQ4GihB-tAjnJ1"],["Legislação Geral","1L1yDsVKiQb_HuZc6P0nP8W2NfV2XWcal"],["Língua Portuguesa","10tnnkkaSFqH2ganF-eNKipD_EkyyJUDZ"],["Raciocínio Lógico","1fqeq6zsMSeiadHqzHgPfHY0medoPRbUv"]];
+const dl=id=>"https://drive.google.com/file/d/"+id+"/view?usp=drive_link";
+const VID="https://youtube.com/playlist?list=PLE14Y2dSYBn8&si=sghSbkvIK7YuibTl";
+const SIM="https://drive.google.com/drive/folders/1Y2dGhl5CcXrqAd7gCt-27YvToe3X5uqc?usp=drive_link";
+const ZAP="https://api.whatsapp.com/send?phone=5571991039652";
+const DNAMES=D.filter(d=>d[0]!="Edital").map(d=>d[0]);
+
+const KEY="pcba2026";let S,USER=null,tm=null;
+const DEF=()=>({acc:{},min:{},weak:[],todo:[],rev:[],q:[],cont:{},last:null,goal:60,theme:"auto",big:false,hc:false});
+function load(o){S=Object.assign(DEF(),o||{})}
+function setSt(t){const e=document.getElementById("sync");if(e)e.textContent=t}
+function save(){try{localStorage.setItem(KEY+":"+(USER?USER.sub:""),JSON.stringify(S))}catch(e){}
+ clearTimeout(tm);tm=setTimeout(push,1500);setSt("Salvando…")}
+async function push(){if(!USER)return;
+ try{const r=await fetch("/api/data",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(S)});
+  setSt(r.ok?"Salvo no Google Drive ✓":"Erro ao salvar")}catch(e){setSt("Offline: salvo no aparelho")}}
+addEventListener("pagehide",()=>{if(USER&&tm){clearTimeout(tm);push()}});
+const $=s=>document.querySelector(s);
+const iso=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function hash(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("pcba|"+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+const daysLeft=()=>{const n=new Date();n.setHours(0,0,0,0);return Math.round((EXAM-n)/864e5)};
+
+function applyTheme(){const r=document.documentElement;r.classList.toggle("hc",S.hc);document.body.classList.toggle("big",S.big);
+ if(S.theme==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",S.theme)}
+
+/* ---------- login Google ---------- */
+async function boot(){
+ load();applyTheme();
+ try{const r=await fetch("/api/me");if(r.ok)USER=await r.json()}catch(e){}
+ if(!USER){$("#login").hidden=false;return}
+ let rm=null;try{const r=await fetch("/api/data");if(r.ok)rm=await r.json()}catch(e){}
+ if(!rm||!Object.keys(rm).length){try{rm=JSON.parse(localStorage.getItem(KEY+":"+USER.sub))}catch(e){}}
+ load(rm);applyTheme();setSt("Sincronizado ✓");enter();
+}
+function enter(){
+ $("#login").hidden=true;$("#chg").hidden=true;$("#app").hidden=false;
+ const t=iso();S.acc[t]=(S.acc[t]||0)+1;save();
+ $("#cd").textContent=Math.max(daysLeft(),0);
+ nav();show(S.last&&TABS.find(x=>x[0]===S.last)?S.last:"home");
+}
+
+/* ---------- tabs ---------- */
+const TABS=[["home","🏠 Início"],["rev","⏱️ Estudo reverso"],["weak","📝 Pontos fracos"],["cont","📚 Conteúdos"],["act","✅ Atividades"],["plan","🗓️ Cronograma"],["stats","📊 Estatísticas"],["com","💬 Comunicação"],["cfg","♿ Ajustes"]];
+function nav(){$("#nav").innerHTML=TABS.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join("");
+ $("#nav").onclick=e=>{const b=e.target.closest("button");if(b)show(b.dataset.t)}}
+function show(t){S.last=t;save();
+ document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+ $("#main").innerHTML=V[t]();if(H[t])H[t]();window.scrollTo(0,0)}
+
+const today=()=>S.min[iso()]||0;
+function alertMsg(){const d=daysLeft();
+ if(d<0)return["Prova realizada. Bons resultados!","",0];
+ if(d===0)return["HOJE é o dia da prova! Documento, caneta preta e confiança.","red",1];
+ if(d<=7)return[`Reta final: faltam ${d} dia(s). Foque em revisão, pontos fracos e descanso.`,"red",1];
+ if(d<=30)return[`Faltam ${d} dias. Intensifique simulados e revisão espaçada.`,"red",1];
+ if(d<=60)return[`Faltam ${d} dias. Mantenha a meta de 1h/dia de estudo reverso e feche as lacunas.`,"",1];
+ return[`Faltam ${d} dias para a prova. Constância vence: 1h por dia.`,"",1]}
+function streak(){let n=0,d=new Date();if(!(S.min[iso(d)]>=S.goal))d.setDate(d.getDate()-1);
+ while((S.min[iso(d)]||0)>=S.goal){n++;d.setDate(d.getDate()-1)}return n}
+
+const V={};const H={};
+V.home=()=>{const a=alertMsg(),p=Math.min(100,Math.round(today()/S.goal*100));
+ const pend=S.todo.filter(x=>!x.d).length,wk=S.weak.filter(w=>!w.ok).length;
+ return `<div class="alert ${a[1]}" role="status"><b>🔔 Alerta diário:</b> ${a[0]}</div>
+ <div class="row"><button id="ntf" class="alt">Ativar notificações do navegador</button><span class="m" id="ntm"></span></div>
+ <div class="grid">
+ <div class="card"><div class="m">Hoje (estudo reverso)</div><div class="k">${today()} / ${S.goal} min</div><div class="bar"><i style="width:${p}%"></i></div><p class="m">Sequência de dias com meta: <b>${streak()}</b></p></div>
+ <div class="card"><div class="m">Pontos fracos a revisar</div><div class="k">${wk}</div><button class="alt" onclick="show('weak')">Abrir</button></div>
+ <div class="card"><div class="m">Tarefas pendentes</div><div class="k">${pend}</div><button class="alt" onclick="show('plan')">Abrir</button></div>
+ </div>
+ <div class="card"><h2>Acesso rápido</h2>
+ <a class="lk" href="${dl(D.find(d=>d[0]=="Edital")[1])}" target="_blank" rel="noopener">📄 Edital</a>
+ <a class="lk" href="${SIM}" target="_blank" rel="noopener">📝 Simulados e provas anteriores</a>
+ <a class="lk" href="${VID}" target="_blank" rel="noopener">🎬 Videoaulas</a>
+ <button onclick="show('cont')">Ver todos os resumos e guias</button></div>
+ <div class="card"><h2>O que é estudo reverso?</h2><p class="m">Comece pelas <b>questões</b> (provas anteriores), erre, anote o motivo na aba Pontos fracos e só então volte à teoria apenas do que faltou. Meta: 1 hora por dia.</p></div>`};
+H.home=()=>{const b=$("#ntf");if(!("Notification" in window)){b.hidden=true;return}
+ const upd=()=>$("#ntm").textContent=Notification.permission==="granted"?"Notificações ativas (funcionam com a página aberta).":"";upd();
+ b.onclick=async()=>{await Notification.requestPermission();upd();if(Notification.permission==="granted")new Notification("Estudos PCBA",{body:alertMsg()[0]})};
+ if(Notification.permission==="granted"&&localStorage.getItem("pcba_n")!==iso()){localStorage.setItem("pcba_n",iso());new Notification("Estudos PCBA",{body:alertMsg()[0]})}};
+
+/* estudo reverso */
+let T={mode:"foco",left:25*60,run:false,id:null};
+V.rev=()=>`<div class="card"><h2>⏱️ Pomodoro · estudo reverso</h2>
+ <div class="tm" id="tm">25:00</div><p class="m" style="text-align:center" id="tmm">Foco · questões primeiro, teoria depois</p>
+ <div class="row" style="justify-content:center"><button id="ts">Iniciar</button><button class="alt" id="tr">Zerar</button><button class="alt" id="tk">Alternar foco/pausa</button></div></div>
+ <div class="card"><h2>Hoje: <span id="hj">${today()}</span> de ${S.goal} min</h2><div class="bar"><i id="hb" style="width:${Math.min(100,today()/S.goal*100)}%"></i></div>
+ <div class="row" style="margin-top:10px"><input id="mn" type="number" min="1" max="600" placeholder="minutos" style="width:110px"><select id="md">${DNAMES.map(n=>`<option>${esc(n)}</option>`).join("")}</select><button id="ma">Registrar estudo</button></div>
+ <p class="m">Meta diária (min): <input id="gl" type="number" min="10" max="600" value="${S.goal}" style="width:90px"></p></div>`;
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function addMin(m,d){const t=iso();S.min[t]=(S.min[t]||0)+m;S.cont[d]=(S.cont[d]||0)+m;save()}
+H.rev=()=>{const up=()=>{const e=$("#tm");if(e)e.textContent=fmt(T.left)};up();$("#ts").textContent=T.run?"Pausar":"Iniciar";
+ const refresh=()=>{$("#hj").textContent=today();$("#hb").style.width=Math.min(100,today()/S.goal*100)+"%"};
+ $("#ts").onclick=()=>{if(T.run){clearInterval(T.id);T.run=false}else{T.run=true;T.id=setInterval(()=>{T.left--;up();
+   if(T.left<=0){clearInterval(T.id);T.run=false;if(T.mode==="foco"){addMin(25,$("#md")?$("#md").value:"Geral");refresh()}
+    try{new Notification("Pomodoro",{body:T.mode==="foco"?"Foco concluído! Pausa de 5 min.":"Pausa acabou. Volte ao foco."})}catch(e){}
+    T.mode=T.mode==="foco"?"pausa":"foco";T.left=T.mode==="foco"?1500:300;up();const b=$("#ts");if(b)b.textContent="Iniciar"}},1000)}
+  $("#ts").textContent=T.run?"Pausar":"Iniciar"};
+ $("#tr").onclick=()=>{clearInterval(T.id);T.run=false;T.left=T.mode==="foco"?1500:300;up();$("#ts").textContent="Iniciar"};
+ $("#tk").onclick=()=>{clearInterval(T.id);T.run=false;T.mode=T.mode==="foco"?"pausa":"foco";T.left=T.mode==="foco"?1500:300;up();$("#ts").textContent="Iniciar"};
+ $("#ma").onclick=()=>{const m=parseInt($("#mn").value);if(m>0){addMin(m,$("#md").value);$("#mn").value="";refresh()}};
+ $("#gl").onchange=e=>{S.goal=Math.max(10,parseInt(e.target.value)||60);save();refresh()}};
+
+/* pontos fracos */
+V.weak=()=>`<div class="card"><h2>📝 Anotar ponto fraco</h2>
+ <div class="row"><select id="wd">${DNAMES.map(n=>`<option>${esc(n)}</option>`).join("")}</select><input id="wt" type="text" placeholder="Assunto (ex.: crimes contra a administração)" style="flex:1;min-width:180px"></div>
+ <textarea id="wn" placeholder="Por que errei? O que preciso revisar?"></textarea><br><button id="wa">Salvar ponto fraco</button></div>
+ <div class="card"><h2>A revisar (${S.weak.filter(w=>!w.ok).length})</h2><ul>${S.weak.map((w,i)=>w.ok?"":`<li><span><b>${esc(w.d)}</b> · ${esc(w.t)}<br><span class="m">${esc(w.n)} · ${w.dt}</span></span><button class="alt" data-ok="${i}">Revisado ✓</button><button class="alt" data-x="${i}" aria-label="Excluir">✕</button></li>`).join("")||'<li class="m">Nada por aqui ainda.</li>'}</ul></div>
+ <div class="card"><h3>Já revisados (${S.weak.filter(w=>w.ok).length})</h3><ul>${S.weak.map((w,i)=>!w.ok?"":`<li class="done"><span>${esc(w.d)} · ${esc(w.t)}</span><button class="alt" data-x="${i}" aria-label="Excluir">✕</button></li>`).join("")}</ul></div>`;
+H.weak=()=>{$("#wa").onclick=()=>{const t=$("#wt").value.trim();if(!t)return;S.weak.unshift({d:$("#wd").value,t,n:$("#wn").value.trim(),dt:iso(),ok:false});save();show("weak")};
+ $("#main").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.ok!==undefined){const w=S.weak[b.dataset.ok];w.ok=true;
+   [1,3,7,15].forEach(n=>{const d=new Date();d.setDate(d.getDate()+n);S.rev.push({t:`Revisar: ${w.d} · ${w.t}`,d:false,due:iso(d)})});save();show("weak")}
+  if(b.dataset.x!==undefined){S.weak.splice(b.dataset.x,1);save();show("weak")}}};
+
+/* conteúdos */
+V.cont=()=>`<div class="card"><h2>📚 Resumos e guias (PDF)</h2>${D.map(d=>`<a class="lk" href="${dl(d[1])}" target="_blank" rel="noopener">📄 ${esc(d[0])}</a>`).join("")}</div>
+ <div class="card"><h2>Mais materiais</h2>
+ <a class="lk" href="${VID}" target="_blank" rel="noopener">🎬 Videoaulas (playlist)</a>
+ <a class="lk" href="${SIM}" target="_blank" rel="noopener">📝 Simulados e provas anteriores (pasta)</a>
+ <p class="m">Apostilas, slides e leituras complementares: use a pasta de simulados e provas no Drive e as videoaulas para aprofundar cada disciplina.</p></div>`;
+
+/* atividades e simulados */
+V.act=()=>{const q=S.q;const tot=q.reduce((a,b)=>a+b.t,0),ac=q.reduce((a,b)=>a+b.a,0);
+ return `<div class="card"><h2>✅ Simulados e provas anteriores</h2><a class="lk" href="${SIM}" target="_blank" rel="noopener">Abrir pasta de simulados</a>
+ <h3 style="margin-top:12px">Registrar resultado</h3><div class="row"><select id="qd">${DNAMES.map(n=>`<option>${esc(n)}</option>`).join("")}</select>
+ <input id="qa" type="number" min="0" placeholder="Acertos" style="width:100px"><input id="qt" type="number" min="1" placeholder="Total" style="width:100px"><button id="qb">Salvar</button></div></div>
+ <div class="card"><h2>Histórico</h2><p class="m">Geral: <b>${tot?Math.round(ac/tot*100):0}%</b> de acertos (${ac}/${tot})</p><ul>${q.slice(0,15).map(x=>`<li><span>${x.dt} · ${esc(x.d)}</span><b>${x.a}/${x.t} (${Math.round(x.a/x.t*100)}%)</b></li>`).join("")||'<li class="m">Sem registros.</li>'}</ul></div>`};
+H.act=()=>{$("#qb").onclick=()=>{const a=parseInt($("#qa").value),t=parseInt($("#qt").value);if(!(t>0)||!(a>=0)||a>t)return;S.q.unshift({dt:iso(),d:$("#qd").value,a,t});save();show("act")}};
+
+/* cronograma */
+V.plan=()=>{const t=iso();const due=S.rev.filter(r=>!r.d&&r.due<=t);
+ return `<div class="card"><h2>🗓️ Prazos</h2><p>Prova: <b>06/12/2026</b> · faltam <b>${Math.max(daysLeft(),0)}</b> dias · cerca de <b>${Math.max(Math.floor(daysLeft()/7),0)}</b> semanas</p></div>
+ ${due.length?`<div class="alert red"><b>Revisões espaçadas de hoje (${due.length}):</b><ul>${due.map(r=>`<li><span>${esc(r.t)}</span><button class="alt" data-rd="${S.rev.indexOf(r)}">Feito</button></li>`).join("")}</ul></div>`:""}
+ <div class="card"><h2>Lista de tarefas</h2><div class="row"><input id="ti" type="text" placeholder="Nova tarefa" style="flex:1;min-width:160px"><input id="td" type="date"><button id="tb">Adicionar</button></div>
+ <ul>${S.todo.map((x,i)=>`<li class="${x.d?"done":""}"><input type="checkbox" data-c="${i}" ${x.d?"checked":""} aria-label="Concluir"><span>${esc(x.t)}${x.due?` <span class="m">· ${x.due.split("-").reverse().join("/")}</span>`:""}</span><button class="alt" data-tx="${i}" aria-label="Excluir">✕</button></li>`).join("")||'<li class="m">Sem tarefas.</li>'}</ul></div>
+ <p class="m">Dica: ao marcar um ponto fraco como revisado, o ambiente agenda revisões em 1, 3, 7 e 15 dias (revisão espaçada).</p>`};
+H.plan=()=>{$("#tb").onclick=()=>{const t=$("#ti").value.trim();if(!t)return;S.todo.push({t,d:false,due:$("#td").value});save();show("plan")};
+ $("#main").onclick=e=>{const c=e.target.closest("[data-c]"),b=e.target.closest("button");
+  if(c){S.todo[c.dataset.c].d=c.checked;save();show("plan")}
+  if(b&&b.dataset.tx!==undefined){S.todo.splice(b.dataset.tx,1);save();show("plan")}
+  if(b&&b.dataset.rd!==undefined){S.rev[b.dataset.rd].d=true;save();show("plan")}}};
+
+/* estatísticas */
+V.stats=()=>{const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d)}
+ const mx=Math.max(S.goal,...days.map(d=>S.min[iso(d)]||0));
+ const tot=Object.values(S.min).reduce((a,b)=>a+b,0),accT=Object.values(S.acc).reduce((a,b)=>a+b,0);
+ const q=S.q,qt=q.reduce((a,b)=>a+b.t,0),qa=q.reduce((a,b)=>a+b.a,0);
+ const by={};q.forEach(x=>{by[x.d]=by[x.d]||[0,0];by[x.d][0]+=x.a;by[x.d][1]+=x.t});
+ const rank=Object.entries(by).map(([k,v])=>[k,Math.round(v[0]/v[1]*100)]).sort((a,b)=>a[1]-b[1]);
+ const cont=Object.entries(S.cont).sort((a,b)=>b[1]-a[1]);
+ return `<div class="grid"><div class="card"><div class="m">Tempo total de estudo</div><div class="k">${Math.floor(tot/60)}h${String(tot%60).padStart(2,"0")}</div></div>
+ <div class="card"><div class="m">Acessos (total)</div><div class="k">${accT}</div></div>
+ <div class="card"><div class="m">Sequência com meta</div><div class="k">${streak()} dias</div></div>
+ <div class="card"><div class="m">Desempenho em questões</div><div class="k">${qt?Math.round(qa/qt*100):0}%</div></div></div>
+ <div class="card"><h2>Últimos 7 dias (min · meta ${S.goal})</h2><div class="ch">${days.map(d=>{const v=S.min[iso(d)]||0;return `<div><b style="height:${v/mx*90}px;${v>=S.goal?"background:var(--ok)":""}"></b>${v}<br>${d.getDate()}/${d.getMonth()+1}</div>`}).join("")}</div></div>
+ <div class="card"><h2>Acessos por dia (7 dias)</h2><div class="ch">${days.map(d=>{const v=S.acc[iso(d)]||0;return `<div><b style="height:${Math.min(v,20)*4}px"></b>${v}<br>${d.getDate()}/${d.getMonth()+1}</div>`}).join("")}</div></div>
+ <div class="card"><h2>Desempenho por disciplina</h2><ul>${rank.map(r=>`<li><span>${esc(r[0])}</span><b style="color:${r[1]<60?"var(--bad)":"var(--ok)"}">${r[1]}%</b></li>`).join("")||'<li class="m">Registre simulados para ver seu desempenho.</li>'}</ul></div>
+ <div class="card"><h2>Tempo por disciplina</h2><ul>${cont.map(c=>`<li><span>${esc(c[0])}</span><b>${c[1]} min</b></li>`).join("")||'<li class="m">Sem registros.</li>'}</ul></div>`};
+
+/* comunicação */
+V.com=()=>`<div class="card"><h2>💬 Comunicação</h2><p>Canal direto com o professor e colegas (assíncrono e síncrono):</p>
+ <a class="lk" href="${ZAP}" target="_blank" rel="noopener">📱 WhatsApp · Prof. Nil Lima</a>
+ <a class="lk" href="https://instagram.com/simplesmentenil" target="_blank" rel="noopener">📷 Instagram · @simplesmentenil</a></div>`;
+
+/* ajustes: acessibilidade, segurança */
+V.cfg=()=>`<div class="card"><h2>♿ Acessibilidade</h2><div class="row">
+ <label>Tema <select id="th"><option value="auto">Automático</option><option value="light">Claro</option><option value="dark">Escuro</option></select></label>
+ <label><input type="checkbox" id="hc" ${S.hc?"checked":""}> Alto contraste</label>
+ <label><input type="checkbox" id="bg" ${S.big?"checked":""}> Fonte grande</label></div>
+ <p class="m">Layout compatível com leitores de tela e navegação por teclado. Para legendas, use o recurso CC dos vídeos do YouTube.</p></div>
+ <div class="card"><h2>🔒 Segurança e privacidade</h2><p class="m">Conectado como ${esc(USER.email)}. Seus dados (tempo, notas, simulados) ficam na pasta oculta do app no seu Google Drive, acessível só por você e por este app. O backup em arquivo continua disponível.</p>
+ <div class="row"><button id="ex" class="alt">Exportar backup</button><label class="alt" style="padding:.55em .8em;border:1px solid var(--bd);border-radius:10px;cursor:pointer">Importar<input id="im" type="file" accept=".json" hidden></label><button id="lo" class="alt">Sair</button></div></div>`;
+H.cfg=()=>{$("#th").value=S.theme;
+ $("#th").onchange=e=>{S.theme=e.target.value;save();applyTheme()};
+ $("#hc").onchange=e=>{S.hc=e.target.checked;save();applyTheme()};
+ $("#bg").onchange=e=>{S.big=e.target.checked;save();applyTheme()};
+ $("#lo").onclick=()=>{location.href="/api/auth/logout"};
+ $("#ex").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:"application/json"}));a.download="backup-estudos-pcba.json";a.click()};
+ $("#im").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{S=Object.assign(S,JSON.parse(t));save();location.reload()}catch(x){alert("Arquivo inválido")}})}};
+
+boot();
+</script>
+</body>
+</html>
